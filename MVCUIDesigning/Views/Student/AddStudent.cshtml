@@ -1,0 +1,41 @@
+﻿@model MVCUIDesigning.Models.Student
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddStudent</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body style="background-color:pink">
+    <div>
+        @{Html.RenderPartial("_Header");}
+        @using (Html.BeginForm())
+        {
+            @Html.Label("Student Id:");<br />
+            @Html.TextBox("SId");<br />
+            @Html.Label("Name:");<br />
+            @Html.TextBox("Name");<br />
+            @Html.Label("Class:");
+            List<int> li = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            SelectList item = new SelectList(li);
+            @Html.DropDownList("Class", item, "-Select Class-");<br />
+            @Html.Label("Gender:");
+            @Html.RadioButton("Gender", "Male");@:Male
+            @Html.RadioButton("Gender", "Female");@:Female
+            @Html.RadioButton("Gender", "TransGender");@:TransGender<br />
+            @Html.Label("Fees:");<br />
+            @Html.TextBox("Fees");<br />
+            @Html.Label("Adress:");<br />
+            @Html.TextArea("Address", "", 3, 21, new { });
+            <br /><br />
+            <input type="submit" value="Save" class="btn btn-primary" />
+            <input type="reset" value="Reset" class="btn btn-secondary" />
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿@model MVCUIDesigning.Models.Student
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html> 
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddStudentSt</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        @{ 
+            String strHeader = Html.Partial("_Header").ToString();
+            strHeader = strHeader.Replace("150px", "200px");
+            strHeader = strHeader.Replace("lightgray", "lightpink");
+            MvcHtmlString newStrHeader = new MvcHtmlString(strHeader);
+            @newStrHeader
+        }
+        @using (Html.BeginForm())
+        {
+            @Html.LabelFor(S => S.Sid, new { @class = "text-info" })<br />
+            @Html.TextBoxFor(S => S.Sid, new { PlaceHolder = "Enter student Id" })<br />
+            @Html.LabelFor(S => S.Name, new { @class = "text-info" })<br />
+            @Html.TextBoxFor(S => S.Name, new { PlaceHolder = "Enter student Name" }) <br />
+            List<int> li = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            SelectList items = new SelectList(li);
+            @Html.LabelFor(S => S.Class);<br />
+            @Html.DropDownListFor(S => S.Class, items, "-Select Class-"); <br />
+            @Html.LabelFor(S => S.Gender, new { @class = "text-info" })
+            @Html.RadioButtonFor(S => S.Gender, "Male")@:Male
+            @Html.RadioButtonFor(S => S.Gender, "Female")@:Female
+            @Html.RadioButtonFor(S => S.Gender, "Transgender")@:Transgender<br />
+            @Html.LabelFor(S => S.Fees, new { @class = "text-info" })<br />
+            @Html.TextAreaFor(S => S.Fees, new { PlaceHolder = "Enter Annual Fe" })<br />
+            @Html.LabelFor(S => S.Address, new { @class = "text-info" })<br />
+            @Html.TextAreaFor(S => S.Address, 3, 23, new { PlaceHolder = "Enter Your Adress" }) < br />
+            <br /><br />
+            <input type="submit" value="Save" class="btn btn-primary" />
+            <input type="reset" value="Reset" class="btn btn-secondary" />
+        }
+    </div>
+</body>
+</html>

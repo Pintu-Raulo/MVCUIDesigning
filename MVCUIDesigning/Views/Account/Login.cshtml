@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Validate","Account"))
+            {
+            @Html.Label("Using Name;", new {@class="text-info"})<br />
+            @Html.TextBox("txtName", "", new { PlaceHolder = "Enter Your name"});<br />
+            @Html.Label("Password,", new { @class = "text-info" })<br />
+            @Html.TextBox("txtPwd", "", new { PlaceHolder = "Enter your password"})<br />
+            <br/>
+            <input type="submit" value="Login"class="btn btn-success" />
+            <input type="reset" value="Reset"class="btn btn-danger"/>
+            }
+    </div>
+</body>
+</html>
